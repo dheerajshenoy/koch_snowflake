@@ -13,6 +13,7 @@ ax.set_xticks([])
 ax.set_yticks([])
 for i in ax.spines:
     ax.spines[i].set_visible(False)
+
 def kochSnowflakeImpl(p1, p2):
     u = p2 - p1
     v = np.array([-u[1], u[0]])
@@ -48,7 +49,7 @@ def animate(i):
     ln.set_data(x[i], y[i])
     plt.plot(x[i], y[i], '.b')
 
-
 if __name__ == '__main__':
-    anim = FuncAnimation(fig, animate, interval=0.01, repeat=False, frames=len(x))
-    plt.show()
+    anim = FuncAnimation(fig, animate, interval=0.01, repeat=False, frames=10)
+    writer = animation.ImageMagickFileWriter()
+    anim.save("dd.gif", writer=writer)
